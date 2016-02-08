@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Youtube Search</title>
+
+    <meta name="description" content="search youtube videos" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--basic styles-->
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body ng-app="mainApp" ng-controller="searchController" ng-cloak>
+    <header>
+        <div class="container page-header">
+            <h2 style="padding:0px;margin:5px;">youtubesearch.com</h2>
+            <div style="float:right;letter-spacing:4px">
+                THE WORLD'S BEST YOUTUBE SEARCH SITE
+            </div>
+            </div>
+</header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    Youtube search
+                </a>
+            </div>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="searchQuery" style="width:400px" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="main-container container-fluid">
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row" ng-repeat="item in searchResult | orderBy : 'snippet.title'">
+                    <div class="col-md-3" style="padding-bottom:4px;">
+                        <div class="row">
+                            <img ng-src="{{item.snippet.thumbnails.default.url}}" width="{{item.snippet.thumbnails.default.width}}" height="{{item.snippet.thumbnails.default.height}}" />
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row">{{item.snippet.title}}</div>
+                        <div class="row">{{item.snippet.description}}</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="row">
+                    <article>
+                        <h4>Side article 1</h4>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </p>
+                    </article>
+                </div>
+                <div class="row">
+                    <article>
+                        <h4>Side article 2</h4>
+                        <p>
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+    </div><!--/.main-container-->
+    <footer>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <p style="color:whitesmoke">
+                        Created by: Sathwik &copy;
+                        Contact information: <a href="mailto:sathwik@test.com">
+                            sathwik@test.com
+                        </a>.
+                    </p>
+                    </div>
+                </div>
+        </nav>
+    </footer>
+
+    <!--basic scripts-->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/angular/angular.js"></script>
+    <script src="assets/js/angular/angular-route.js"></script>
+    <script src="app/index.js"></script>
+
+</body>
+</html>
